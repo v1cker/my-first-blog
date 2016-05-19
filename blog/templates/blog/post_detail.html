@@ -1,0 +1,53 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="container post post-detail">
+        <div class="date">
+        {% if post.published_date %}
+            {{ post.published_date }}
+        {% else %}
+            {% if user.is_authenticated %}
+                <a class="btn btn-default" href="{% url 'blog.views.post_publish' pk=post.pk %}">Publish</a>
+            {% endif %}
+        {% endif %}
+        {% if user.is_authenticated %}
+            <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+        {% endif %}
+    </div>
+        <div class="post-heading">
+            <h1 class="title"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
+            </h1>
+            <div class="date">{{ post.created_date|date:'Y / m / d' }}</div>
+        </div>
+        <div class="location">
+            <i class="fa fa-map-marker"></i>
+            <span id="location-content">{{ post.location }}</span>
+        </div>
+        <div id="map-canvas" class="map"></div>
+        <div class="post-content">
+            {{ post.text }}
+        </div>
+        <hr class="fancy-line">
+        <img class="photo" src="{{ post.photo }}" alt="Cover photo for {{ post.title }}">
+    </div>
+    <script src="//maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&sensor=false"></script>
+    <script src="//djangogirlstaipei.github.io/assets/js/map.js"></script>
+    <script src=""></script>
+            <!-- 多说评论框 start -->
+	    <div class="ds-thread" data-thread-key="{{post.pk}}" data-title="{{ post.title }}" data-url="{% url 'post_detail' pk=post.pk %}"></div>
+        <!-- 多说评论框 end -->
+        <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+        <script type="text/javascript">
+        var duoshuoQuery = {short_name:"vicker"};
+	        (function() {
+		        var ds = document.createElement('script');
+	        	ds.type = 'text/javascript';ds.async = true;
+	        	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	        	ds.charset = 'UTF-8';
+	        	(document.getElementsByTagName('head')[0]
+	        	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	        })();
+        </script>
+        <!-- 多说公共JS代码 end -->
+{% endblock %}

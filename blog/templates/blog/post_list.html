@@ -1,0 +1,30 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+    {% for post in posts %}
+        <div class="post-wrapper">
+            <div class="post">
+                <div class="post-heading">
+                    <h2 class="title">
+                        <a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
+                    </h2>
+                    <div class="date">{{ post.created_date|date:"Y / m / d" }}</div>
+                </div>
+                {% if post.photo %}
+                <div class="thumbnail">
+                    <img id="p" src="{{ post.photo }}" alt="">
+                </div>
+                {% else %}
+                <div class="thumbnail thumbnail-default"></div>
+                {% endif %}
+                <div class="post-content read-more-block">
+                    {{ post.text }}
+                </div>
+                <div class="post-footer">
+                    <a class="read-more" href="{% url 'post_detail' pk=post.pk %}">
+                        Read More <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock content %}
