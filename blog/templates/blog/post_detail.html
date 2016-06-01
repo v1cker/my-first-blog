@@ -26,7 +26,11 @@
         </div>
         <div id="map-canvas" class="map"></div>
         <div class="post-content">
-            {{ post.text }}
+            <p>
+                {% autoescape off %}
+                    {{ post.text }}
+                {% endautoescape %}
+            </p>
         </div>
         <hr class="fancy-line">
         <img class="photo" src="{{ post.photo }}" alt="Cover photo for {{ post.title }}">

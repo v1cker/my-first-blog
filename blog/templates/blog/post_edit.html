@@ -2,6 +2,23 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
+    <script type="text/javascript">
+        tinymce.init({
+            selector: "textarea",
+            //width: 800,
+            height: 300,
+            forced_root_block: false,
+            plugins: [
+                "advlist autolink lists link image charmap print preview anchor sh4tinymce upload",
+                "searchreplace visualblocks code fullscreen",
+                "insertdatetime table contextmenu paste addmore"
+            ],
+            upload_action: 'upload.php',   //required
+            upload_file_name: 'userfile',  //required
+            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter" +
+            " alignright alignjustify | bullist numlist outdent indent | preview link image upload sh4tinymce"
+        });
+    </script>
     <h1>New post</h1>
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}
