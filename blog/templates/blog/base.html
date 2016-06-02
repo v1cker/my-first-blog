@@ -24,6 +24,17 @@
             {% endif %}
             <h1 class="site-title text-center"><a href="{% url 'blog.views.post_list' %}">Esther's博客</a></h1>
        </div>
+       <!-- searchbox START -->
+        <div id="searchbox">
+            <form action="{% url 'blog.views.full_search' %}" method="get" class="search-form">
+                <div class="content">
+                    <label>
+                        <input type="text" class="textfield searchtip" name="q" size="24" value="">
+                    </label>
+{#                    <input type="submit" class="button" value="搜索">#}
+                </div>
+            </form>
+        </div>
        <div class="container">
 {#            <div class="row">#}
 {#                <div class="col-md-8">#}
