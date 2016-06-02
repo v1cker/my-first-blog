@@ -60,7 +60,7 @@ h1, h2, h3, h4 {
         padding: 7px 11px 7px 28px;
         line-height: 16px;
         border: 1px solid #bbb;
-        width: 100%;
+        width: 95%;
         -webkit-border-radius: 5px;
         -moz-border-radius: 5px;
         -ms-border-radius: 5px;
@@ -72,5 +72,5 @@ h1, h2, h3, h4 {
 }
 
 #searchbox .content{
-    margin-left: 880px;
+    margin-left: 850px;
 }
