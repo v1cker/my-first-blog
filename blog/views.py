@@ -20,7 +20,7 @@ def full_search(request):
 # Create your views here.
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
-    paginator = Paginator(posts, 2)
+    paginator = Paginator(posts, 4)
     page = request.GET.get('page')
     try:
         posts = paginator.page(page)
