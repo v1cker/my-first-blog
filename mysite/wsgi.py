@@ -1,6 +1,7 @@
 import os
 import sys
 
+# 此文件为pythonanywhere中的配置文件，此处为默认
 path = '/home/vicker/my-first-blog'  # use your own username here
 if path not in sys.path:
     sys.path.append(path)

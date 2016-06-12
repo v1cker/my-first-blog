@@ -2,6 +2,8 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
+    <!-- 富文本编辑器调用开始 -->
+    <!-- 以下内容也为默认 -->
     <script type="text/javascript">
         tinymce.init({
             selector: "textarea",
@@ -19,6 +21,7 @@
             " alignright alignjustify | bullist numlist outdent indent | preview link image upload sh4tinymce"
         });
     </script>
+    <!-- 富文本编辑调用结束 -->
     <h1>New post</h1>
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}

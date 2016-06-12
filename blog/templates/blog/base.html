@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 {% load staticfiles %}
+<!-- 上方代码为python语言与html的专有书写方式，｛％％｝这个符号都是后台的python与html页面进行传输数据 -->
 <html>
 <head>
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <!-- 应用bootstrap框架代码 -->
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+    <!-- 同上 -->
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <!-- 加载blog声明的css文件，路径文/blog/static/css/blog.css -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- 同上 -->
     <link href="//fonts.googleapis.com/css?family=Lemon" rel="stylesheet" type="text/css">
+    <!-- 加载google字体 -->
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- 同第一条 -->
     <link rel="stylesheet" href="{% static 'tinymce/plugins/upload/plugin.css' %}">
+    <!-- 加载富文本的css，也就是可以添加多张图片的那个功能 -->
     <script type="text/javascript" src="{% static 'tinymce/tinymce.min.js' %}"></script>
+    <!-- 同上 -->
 
 <title>Esther's博客</title>
 </head>
 <body>
        <div class="header">
             {% if user.is_authenticated %}
+            <!-- 当用户已经登陆的时候现实以下三行代码，也就是登录以后显示加号和草稿箱，否则显示登录的那个锁 -->
             <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus">添加</span></a>
             <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit">草稿箱</span></a>
             <p class="top-menu">Hello {{ user.username }}<small>&nbsp;<a href="{% url 'django.contrib.auth.views.logout' %}">Log out</a></p>
@@ -25,19 +35,25 @@
             <h1 class="site-title text-center"><a href="{% url 'blog.views.post_list' %}">Esther's博客</a></h1>
        </div>
        <!-- searchbox START -->
+       <!-- 搜索的模块 -->
         <div id="searchbox">
             <form action="{% url 'blog.views.full_search' %}" method="get" class="search-form">
+              <!-- action后面是调用的blog文件夹下的views文件中的full_search函数 -->
                 <div class="content">
                     <label>
                         <input type="text" class="textfield searchtip" name="q" size="24" value="">
+                        <!-- 这里的q就是full_search函数中的那个q -->
                     </label>
 {#                    <input type="submit" class="button" value="搜索">#}
+<!-- ｛＃＃｝这个符号里的也是注释掉的内容 -->
                 </div>
             </form>
         </div>
        <div class="container">
 {#            <div class="row">#}
 {#                <div class="col-md-8">#}
+                   <!-- class后面的名称是调用bootstrap用的，也就是要跟它相对应的名字，就会自动帮你加载css进行排版 -->
+                <!-- 因为这是一个模版文件，也就是每个页面都会吊用这个页面，所以下面两行代码理解成每个页面其余的东西，一个替代的符号 -->
                 {% block content %}
                 {% endblock %}
 {#                </div>#}

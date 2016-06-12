@@ -2,6 +2,7 @@
 # -*- encoding: utf-8 -*-
 from .models import Post
 from haystack import indexes
+# 调取haystack这个搜索库，以下书写形式为官方格式
 class PostIndex(indexes.SearchIndex, indexes.Indexable):
     # 文章内容
     text = indexes.CharField(document=True, use_template=True)

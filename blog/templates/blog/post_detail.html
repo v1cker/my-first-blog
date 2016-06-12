@@ -1,6 +1,7 @@
 {% extends 'blog/base.html' %}
-
+<!-- 加载base.html文件 -->
 {% block content %}
+<!-- 这是刚刚base.html中替换的那部分，现在替代开始 -->
     <div class="container post post-detail">
         <div class="date">
         {% if post.published_date %}
@@ -55,3 +56,4 @@
         </script>
         <!-- 多说公共JS代码 end -->
 {% endblock %}
+<!-- 替代结束 -->

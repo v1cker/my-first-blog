@@ -1,4 +1,5 @@
 # encoding: utf-8
+# 该文件为内置文件，也就是搜索的第三方库，放在工程中的原因是方便管理，调取也方便
 
 from __future__ import absolute_import, division, print_function, unicode_literals
 
