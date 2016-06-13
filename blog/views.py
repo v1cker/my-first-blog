@@ -65,7 +65,6 @@ def post_detail(request, pk):
 #     return render(request, 'blog/post_edit.html', {'form': form})
 
 @login_required
-"""登录权限，登陆后才能操作"""
 def post_new(request):
     """创建新的博文"""
     if request.method == "POST":
